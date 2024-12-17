@@ -590,6 +590,7 @@ main {
 
 .service-item {
   position: relative;
+  width: auto;
   background: var(--border-gradient-onyx);
   padding: 20px;
   border-radius: 14px;
@@ -625,7 +626,7 @@ main {
 .service-item-text {
   color: var(--light-gray);
   font-size: var(--fs-6);
-  font-weight: var(--fw-3);
+  font-weight: var(--fw-300);
   line-height: 1.6;
 }
 
@@ -1041,8 +1042,18 @@ main {
   margin: 30px;
 }
 
+/*.project-item {*/
+/*  display: none;*/
+/*}*/
+
 .project-item {
-  display: none;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #1e1e2e; /* Dark background for card */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .project-item.active {
@@ -1059,182 +1070,100 @@ main {
   }
 }
 
-.project-item > a {
-  width: 100%;
+/* Main project card layout */
+.project-item {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  background-color: #1e1e2e; /* Dark card background */
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  transition: transform 0.3s ease;
 }
 
+.project-item:hover {
+  transform: translateY(-5px); /* Add slight hover lift */
+}
+
+/* Image container with spacing */
 .project-img {
-  position: relative;
   width: 100%;
   height: 200px;
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 15px;
-}
-
-.project-img::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  z-index: 1;
-  transition: var(--transition-1);
-}
-
-.project-item > a:hover .project-img::before {
-  background: hsla(0, 0%, 0%, 0.5);
-}
-
-.project-item-icon-box {
-  --scale: 0.8;
-
-  background: var(--jet);
-  color: var(--orange-yellow-crayola);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(var(--scale));
-  font-size: 20px;
-  padding: 18px;
   border-radius: 12px;
-  opacity: 0;
-  z-index: 1;
-  transition: var(--transition-1);
-}
-
-.project-item > a:hover .project-item-icon-box {
-  --scale: 1;
-  opacity: 1;
-}
-
-.project-item-icon-box ion-icon {
-  --ionicon-stroke-width: 50px;
+  overflow: hidden;
+  margin-bottom: 1rem;
 }
 
 .project-img img {
   width: 100%;
-  height: 205px;
+  height: 100%;
   object-fit: cover;
-  transition: var(--transition-1);
+  transition: transform 0.3s ease;
 }
 
-.project-item > a:hover img {
-  transform: scale(1.1);
+.project-item:hover .project-img img {
+  transform: scale(1.05); /* Zoom effect */
 }
 
-.project-title,
-.project-category {
-  margin-left: 10px;
-}
-
+/* Project Title */
 .project-title {
-  color: var(--white-2);
-  font-size: var(--fs-5);
-  font-weight: var(--fw-400);
-  text-transform: capitalize;
-  line-height: 1.3;
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
+/* Project Tools */
 .project-category {
-  color: var(--light-gray-70);
-  font-size: var(--fs-6);
-  font-weight: var(--fw-300);
+  color: #ffcc00;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
 }
 
-/*-----------------------------------*\
-  #BLOG
-\*-----------------------------------*/
-
-.blog-posts {
-  margin-bottom: 10px;
+/* Project Bullet Points */
+.project-details {
+  list-style: none; /* Remove default bullets */
+  padding-left: 0;
 }
 
-.blog-posts-list {
-  /* display: grid; */
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
-
-.blog-post-item > a {
+.project-details li {
   position: relative;
-  background: var(--border-gradient-onyx);
-  height: 100%;
-  box-shadow: var(--shadow-4);
-  border-radius: 16px;
-  z-index: 1;
+  padding-left: 2.5rem; /* Space for custom bullet */
+  font-size: 0.95rem;
+  color: #dcdcdc;
+  line-height: 1.5;
+  margin-bottom: 1rem;
 }
 
-.blog-post-item > a::before {
-  content: "";
+.project-details li::before {
+  content: ""; /* Empty content for pseudo-element */
   position: absolute;
-  inset: 1px;
-  border-radius: inherit;
-  background: var(--eerie-black-1);
-  z-index: -1;
+  left: 0;
+  top: 0.3rem;
+  width: 14px;
+  height: 14px;
+  background-color: #ffcc00; /* Yellow center */
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 204, 0, 0.7); /* Shadow effect */
+  border: 4px solid #444444; /* Dark outer circle for the border */
 }
 
-.blog-banner-box {
-  width: 100%;
-  height: 200px;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.blog-banner-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: var(--transition-1);
-}
-
-.blog-post-item > a:hover .blog-banner-box img {
-  transform: scale(1.1);
-}
-
-.blog-content {
-  padding: 15px;
-}
-
-.blog-meta {
+/* Icon Box Alignment */
+.project-icon-box {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  gap: 7px;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
-.blog-meta :is(.blog-category, time) {
-  color: var(--light-gray-70);
-  font-size: var(--fs-6);
-  font-weight: var(--fw-300);
+.project-icon-box img {
+  width: 40px;
+  height: 40px;
+  margin-right: 1rem;
 }
 
-.blog-meta .dot {
-  background: var(--light-gray-70);
-  width: 4px;
-  height: 4px;
-  border-radius: 4px;
-}
 
-.blog-item-title {
-  margin-bottom: 10px;
-  line-height: 1.3;
-  transition: var(--transition-1);
-}
-
-.blog-post-item > a:hover .blog-item-title {
-  color: var(--orange-yellow-crayola);
-}
-
-.blog-text {
-  color: var(--light-gray);
-  font-size: var(--fs-6);
-  font-weight: var(--fw-300);
-  line-height: 1.6;
-}
 
 /*-----------------------------------*\
   #CONTACT
@@ -1802,11 +1731,10 @@ textarea.form-input::-webkit-resizer {
     color: var(--orange-yellow-crayola);
   }
 
-  /* portfolio and blog grid */
+  /* portfolio */
 
-  .project-list,
-  .blog-posts-list {
-    grid-template-columns: 1fr 1fr;
+  .project-list{
+    grid-template-columns: 1fr;
   }
 
   /**
@@ -1919,16 +1847,9 @@ textarea.form-input::-webkit-resizer {
    */
 
   .project-list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr
   }
 
-  /**
-   * BLOG
-   */
-
-  .blog-banner-box {
-    height: 230px;
-  }
 }
 
 /**
